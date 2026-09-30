@@ -1,0 +1,18 @@
+package utils;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class WebDriverFactory {
+
+	public static WebDriver createDriver() {
+
+		String browser = ConfigReader.getProperty("browser");
+
+		if (browser.equalsIgnoreCase("chrome")) {
+			return new ChromeDriver();
+		} else {
+			throw new RuntimeException("Browser not supported: " + browser);
+		}
+	}
+}
